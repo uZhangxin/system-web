@@ -37,7 +37,7 @@
 <script>
 import {request} from '@/network/request.js'
 import {getModal} from "@/utils/modal.js";
-import {CODE} from "@/utils/code.js";
+import {CONSTANT} from "@/utils/constant.js";
 
 export default {
   name: "z-login",
@@ -46,9 +46,9 @@ export default {
       //登录信息
       loginForm: {
         // 用户名
-        userName: '',
+        userName: 'zhang',
         // 密码
-        password: '',
+        password: '1234',
         // 验证码
         code: '',
         // 随机数，用于获取redis中code
@@ -86,11 +86,14 @@ export default {
           return;
         }
         this.loading = true;
-        request({url: '/api/login', method: 'POST', data: this.loginForm}).then(result => {
-          console.log('/api/login', result);
-          getModal(result.data.code, CODE.MODAL_TYPE.MESSAGE, result.data.msg);
+        request({url: '/api/login', method: 'POST', data: this.loginForm}).then(res => {
+          getModal(res.data.code, CONSTANT.MODAL_TYPE.MESSAGE, res.data.msg);
           //登录失败，刷新验证码
-          if (result.data.code === CODE.HTTP_CODE.SUCCESS) {
+          if (res.data.code === CONSTANT.HTTP_CODE.SUCCESS) {
+            this.$store.dispatch('userInfo/login', {
+              [CONSTANT.TOKEN]: res.data.token,
+              [CONSTANT.USER_INFO]: res.data.userInfo
+            })
             this.$router.push({path: '/index'})
           } else {
             this.loading = false;
@@ -102,9 +105,9 @@ export default {
 
     //获取验证码
     getCode() {
-      request({url: '/api/captchaImage', params: {'codeType': 0}, method: 'GET'}).then(result => {
-        this.codeUrl = "data:image/gif;base64," + result.data.img;
-        this.loginForm.uuid = result.data.uuid;
+      request({url: '/api/captchaImage', params: {'codeType': 0}, method: 'GET'}).then(res => {
+        this.codeUrl = "data:image/gif;base64," + res.data.img;
+        this.loginForm.uuid = res.data.uuid;
       })
     }
   }

@@ -34,7 +34,7 @@ export default {
   },
   mounted() {
     this.$router.options.routes.forEach((v) => {
-      if (v.meta['title'] !== undefined) {
+      if (v.meta?.title!== undefined) {
         this.menuInfo.push(v)
       }
     })

@@ -1,4 +1,4 @@
-const CODE = {
+const CONSTANT = {
     MODAL_TYPE: {
         "MESSAGE": "message",
         "MESSAGE_BOX": "MessageBox",
@@ -8,7 +8,9 @@ const CODE = {
         "SUCCESS": 200,
         "UNAUTHORIZED": 401,
         "ERROR": 500
-    }
+    },
+    TOKEN: "token",
+    USER_INFO: "userInfo"
 }
 
-export {CODE}
+export {CONSTANT}

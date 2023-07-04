@@ -39,9 +39,7 @@ export default {
       this.$emit('is-collapse', this.isCollapse)
     }
   },
-  created() {
-    console.log(this.menuInfo);
-  }
+  created() {}
 }
 </script>
 
