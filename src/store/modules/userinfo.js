@@ -1,4 +1,4 @@
-import {getCookies, setCookies} from "@/store/auth";
+import {getCookies, setCookies} from "@/utils/auth";
 import {CONSTANT} from "@/utils/constant";
 
 const state = {

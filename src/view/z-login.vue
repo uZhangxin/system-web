@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import {request} from '@/network/request.js'
+import request from '@/utils/request.js'
 import {getModal} from "@/utils/modal.js";
 import {CONSTANT} from "@/utils/constant.js";
 
@@ -86,7 +86,7 @@ export default {
           return;
         }
         this.loading = true;
-        request({url: '/api/login', method: 'POST', data: this.loginForm}).then(res => {
+        request({url: '/login', method: 'POST', data: this.loginForm}).then(res => {
           getModal(res.data.code, CONSTANT.MODAL_TYPE.MESSAGE, res.data.msg);
           //登录失败，刷新验证码
           if (res.data.code === CONSTANT.HTTP_CODE.SUCCESS) {
@@ -105,7 +105,7 @@ export default {
 
     //获取验证码
     getCode() {
-      request({url: '/api/captchaImage', params: {'codeType': 0}, method: 'GET'}).then(res => {
+      request({url: '/captchaImage', params: {'codeType': 0}, method: 'GET'}).then(res => {
         this.codeUrl = "data:image/gif;base64," + res.data.img;
         this.loginForm.uuid = res.data.uuid;
       })
