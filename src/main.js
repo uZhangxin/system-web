@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
 import './plugins/element.js'
-import './assets/style/global.css'
+import '@/assets/style/global.css'
 import store from "@/store";
 
 import router from './router'
+
+import './icons' // icon
 
 Vue.config.productionTip = false
 
@@ -13,5 +15,3 @@ new Vue({
   router,
   store
 }).$mount('#app')
-
-console.log('process.env',process.env)

@@ -1,10 +1,8 @@
 <template>
   <div>
     <el-container>
-      <el-header>
-        <z-header>
-
-        </z-header>
+      <el-header height="50px">
+        <z-header></z-header>
       </el-header>
       <el-container>
         <el-aside :width="asideWidth">

@@ -11,7 +11,10 @@ import {
   Header,
   FormItem,
   Input,
-  Form
+  Form,
+  Select,
+  Option,
+  Message
 } from 'element-ui'
 
 Vue.use(Button)
@@ -26,4 +29,7 @@ Vue.use(Header)
 Vue.use(FormItem)
 Vue.use(Input)
 Vue.use(Form)
+Vue.use(Select)
+Vue.use(Option)
 
+Vue.prototype.$message = Message;

@@ -6,12 +6,18 @@
 
       <!--用户名-->
       <el-form-item prop="userName">
-        <el-input prefix-icon="iconfont icon-yonghu" v-model="loginForm.userName" placeholder="请输入账号"></el-input>
+        <span class="svg-container">
+          <svg-icon icon-class="user" />
+        </span>
+        <el-input v-model="loginForm.userName" placeholder="请输入账号"></el-input>
       </el-form-item>
 
       <!--密码-->
       <el-form-item prop="password">
-        <el-input prefix-icon="iconfont icon-mima" v-model="loginForm.password" placeholder="请输入密码"
+        <span class="svg-container">
+          <svg-icon icon-class="password"/>
+        </span>
+        <el-input v-model="loginForm.password" placeholder="请输入密码"
                   show-password></el-input>
       </el-form-item>
 
@@ -114,6 +120,23 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.el-input {
+  display: inline-block;
+  height: 47px;
+  width: 100%;
+}
+
+.el-form-item {
+  width: 85%;
+  margin: 0px auto 20px auto;
+}
+
+.el-input__inner{
+  padding: 0px 15px 0px 36px;
+}
+</style>
+
 <style lang="scss" scoped>
 .login-box {
   display: flex;
@@ -134,9 +157,19 @@ export default {
     width: 360px;
     padding: 25px 25px 5px 25px;
 
-    .el-form-item {
-      width: 80%;
-      margin: 0px auto 25px auto;
+    .svg-container{
+      padding: 0px 5px 0px 8px;
+      vertical-align: middle;
+      width: 35px;
+      height: 38px;
+      position: absolute;
+      left: 1px;
+      top: 2px;
+      z-index: 99;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
+      background-color: #F5F5F5;
     }
 
     .login-code-input {
@@ -147,6 +180,7 @@ export default {
     .login-code-div {
       float: right;
       width: 33%;
+      padding-top: 5px;
 
       .login-code-img {
         height: 100%;

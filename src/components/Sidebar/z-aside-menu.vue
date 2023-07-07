@@ -58,7 +58,7 @@ export default {
 .aside {
   background-color: #545c64;
   width: 100%;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 50px);
   transition: width 0.28s;
   max-width: 210px;
   min-width: 64px;
