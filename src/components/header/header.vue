@@ -2,8 +2,8 @@
   <div class="header">
     <!-- 头部右侧菜单栏，搜索、全屏、登录信息 -->
     <div class="header-right-menu">
-      <header-search class="right-menu-item"></header-search>
-      <full-screen class="right-menu-item"></full-screen>
+      <z-header-search class="right-menu-item"></z-header-search>
+      <z-header-full-screen class="right-menu-item"></z-header-full-screen>
 
       <el-dropdown class="avatar-container right-menu-item">
         <div class="avatar-wrapper">
@@ -19,13 +19,13 @@
 </template>
 
 <script>
-import HeaderSearch from "@/components/HeaderSearch.vue";
-import FullScreen from "@/components/FullScreen.vue";
+import ZHeaderSearch from "@/components/header/headersearch.vue";
+import ZHeaderFullScreen from "@/components/header/headerfullscreen.vue";
 import {mapGetters} from "vuex";
 
 export default {
-  name: "z-header",
-  components: {FullScreen, HeaderSearch},
+  name: "ZHeader",
+  components: {ZHeaderSearch, ZHeaderFullScreen},
   computed: {
     ...mapGetters(['avatar'])
   },

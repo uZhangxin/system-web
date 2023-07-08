@@ -10,37 +10,37 @@ let routeConfig = [
   },
   {
     path: '/login',
-    component: () => import('@/view/z-login.vue')
+    component: () => import('@/view/login.vue')
   },
   {
     path: '/index',
-    component: () => import('@/view/z-layout.vue'),
+    component: () => import('@/view/layout.vue'),
     meta: {}
   },
   {
     path: '/sys-config',
-    component: () => import('@/view/z-layout.vue'),
+    component: () => import('@/view/layout.vue'),
     meta: {
       title: '系统设置'
     },
   },
   {
     path: '/echarts',
-    component: () => import('@/view/z-layout.vue'),
+    component: () => import('@/view/layout.vue'),
     meta: {
       title: '图表'
     },
     children: [
       {
         path: 'echarts-pillar',
-        component: () => import('@/components/z-echarts-bar.vue'),
+        component: () => import('@/components/echartsbar.vue'),
         meta: {
           title: '柱状图'
         }
       },
       {
         path: 'echarts-line',
-        component: () => import('@/components/z-echarts-line.vue'),
+        component: () => import('@/components/echartsline.vue'),
         meta: {
           title: '折线图'
         }

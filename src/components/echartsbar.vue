@@ -1,12 +1,12 @@
 <template>
 <div>
-  <p>图表-折线图</p>
+  <p>图表-柱状图</p>
 </div>
 </template>
 
 <script>
 export default {
-  name: "z-echarts-line"
+  name: "ZEchartsBar"
 }
 </script>
 

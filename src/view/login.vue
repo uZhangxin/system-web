@@ -47,7 +47,7 @@ import {CONSTANT} from "@/utils/constant.js";
 import {login} from "@/api/user";
 
 export default {
-  name: "z-login",
+  name: "ZLogin",
   data() {
     return {
       //登录信息

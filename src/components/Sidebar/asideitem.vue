@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: "z-aside-item",
+  name: "ZAsideItem",
   props: {
     item: {
       type: Object,
@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     hasOneShowingChild() {
-      if (this.item.children == undefined || this.item.children.length == 0) {
+      if (this.item.children === undefined || this.item.children.length === 0) {
         return true
       }
       return false

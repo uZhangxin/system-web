@@ -7,7 +7,7 @@
 <script>
 import screenfull from 'screenfull'
 export default {
-  name: "FullScreen",
+  name: "ZHeaderFullScreen",
   data() {
     return {
       isFullscreen: false

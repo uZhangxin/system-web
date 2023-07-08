@@ -1,12 +1,12 @@
 <template>
 <div>
-  <p>图表-柱状图</p>
+  <p>系统设置</p>
 </div>
 </template>
 
 <script>
 export default {
-  name: "z-echarts-bar"
+  name: "ZSystemConfig"
 }
 </script>
 

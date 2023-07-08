@@ -22,10 +22,10 @@
 <script>
 
 
-import ZAsideItem from "@/components/Sidebar/z-aside-item.vue";
+import ZAsideItem from "@/components/Sidebar/asideitem.vue";
 
 export default {
-  name: "z-aside-menu",
+  name: "ZAsideMenu",
   components: {ZAsideItem},
   props: ['menuInfo'],
   data() {

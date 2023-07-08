@@ -1,12 +1,12 @@
 <template>
 <div>
-  <p>系统设置</p>
+  <p>图表-折线图</p>
 </div>
 </template>
 
 <script>
 export default {
-  name: "z-system-config"
+  name: "ZEchartsLine"
 }
 </script>
 
