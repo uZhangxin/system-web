@@ -44,6 +44,7 @@
 import request from '@/utils/request.js'
 import {getModal} from "@/utils/modal.js";
 import {CONSTANT} from "@/utils/constant.js";
+import {login} from "@/api/user";
 
 export default {
   name: "z-login",
@@ -92,7 +93,7 @@ export default {
           return;
         }
         this.loading = true;
-        request({url: '/login', method: 'POST', data: this.loginForm}).then(res => {
+        login(this.loginForm).then(res => {
           getModal(res.data.code, CONSTANT.MODAL_TYPE.MESSAGE, res.data.msg);
           //登录失败，刷新验证码
           if (res.data.code === CONSTANT.HTTP_CODE.SUCCESS) {

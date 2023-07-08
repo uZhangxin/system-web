@@ -14,6 +14,9 @@ import {
   Form,
   Select,
   Option,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
   Message
 } from 'element-ui'
 
@@ -31,5 +34,9 @@ Vue.use(Input)
 Vue.use(Form)
 Vue.use(Select)
 Vue.use(Option)
+Vue.use(Dropdown)
+Vue.use(DropdownMenu)
+Vue.use(DropdownItem)
+
 
 Vue.prototype.$message = Message;

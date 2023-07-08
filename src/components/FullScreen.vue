@@ -1,6 +1,6 @@
 <template>
   <div class="header-fullscreen">
-    <svg-icon :icon-class="isFullscreen?'exit-fullscreen':'fullscreen'" @click="fullScreenClick"/>
+    <svg-icon class="svgItem" :icon-class="isFullscreen?'exit-fullscreen':'fullscreen'" @click="fullScreenClick"/>
   </div>
 </template>
 
@@ -48,8 +48,5 @@ export default {
 </script>
 
 <style scoped>
-.header-fullscreen {
-
-}
 
 </style>

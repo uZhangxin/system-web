@@ -8,9 +8,5 @@ export function setCookies(k,v) {
 }
 
 export function removeCookies(k) {
-  return Cookies.removeItem(k)
-}
-
-export function clearCookies() {
-  return Cookies.clear()
+  return Cookies.remove(k)
 }

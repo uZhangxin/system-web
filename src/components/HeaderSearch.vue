@@ -1,7 +1,7 @@
 <template>
   <div class="header-search">
-    <svg-icon icon-class="search" class="svg-item" @click="selectClick"/>
-    <el-select v-model="search" filterable remote placeholder="请输入关键词"
+    <svg-icon icon-class="search" class="svg-item" @click.stop="selectClick"/>
+    <el-select ref="headerSearchSelect" v-model="search" filterable remote placeholder="请输入关键词"
                :remote-method="remoteMethod" class="header-search-select" :class="{'showSelect': isShow}">
       <el-option
               v-for="item in options"
@@ -23,6 +23,15 @@ export default {
       isShow: false
     }
   },
+  watch: {
+    isShow(val) {
+      if (val) {
+        document.body.addEventListener('click', this.closeSelect)
+      } else {
+        document.body.removeEventListener('click', this.closeSelect)
+      }
+    }
+  },
   methods: {
     remoteMethod() {
 
@@ -30,6 +39,14 @@ export default {
     // 点击图标展开/折叠搜索框
     selectClick() {
       this.isShow = !this.isShow
+      if(this.isShow){
+        this.$refs.headerSearchSelect && this.$refs.headerSearchSelect.focus()
+      }
+    },
+    closeSelect(){
+      this.$refs.headerSearchSelect && this.$refs.headerSearchSelect.blur()
+      this.options = []
+      this.isShow = false
     }
   }
 }
