@@ -9,9 +9,9 @@
           <z-aside-menu :menu-info="menuInfo" @is-collapse="collapseAside"></z-aside-menu>
         </el-aside>
         <el-main>
-          <div class="tags-view-wrap">
-
-          </div>
+          <template>
+            <z-tags-view></z-tags-view>
+          </template>
           <router-view></router-view>
         </el-main>
       </el-container>
@@ -22,10 +22,12 @@
 <script>
 import ZAsideMenu from "../components/Sidebar/asidemenu.vue";
 import ZHeader from "../components/header/header.vue";
+import ZTagsView from "@/components/TagsView/index.vue";
 
 export default {
   name: "ZLayout",
   components: {
+    ZTagsView,
     ZHeader,
     ZAsideMenu
   },
@@ -63,13 +65,5 @@ export default {
 .el-aside {
   transition: width 0.2s;
   overflow: hidden;
-}
-
-.tags-view-wrap {
-  height: 38px;
-  width: 100%;
-  background: #fff;
-  border-bottom: 1px solid #d8dce5;
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,.12);
 }
 </style>

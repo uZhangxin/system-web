@@ -19,6 +19,7 @@ let routeConfig = [
   },
   {
     path: '/sys-config',
+    name: 'sys-config',
     component: () => import('@/view/layout.vue'),
     meta: {
       title: '系统设置'
@@ -33,6 +34,7 @@ let routeConfig = [
     children: [
       {
         path: 'echarts-pillar',
+        name: 'echarts-pillar',
         component: () => import('@/components/echartsbar.vue'),
         meta: {
           title: '柱状图'
@@ -40,6 +42,7 @@ let routeConfig = [
       },
       {
         path: 'echarts-line',
+        name: 'echarts-line',
         component: () => import('@/components/echartsline.vue'),
         meta: {
           title: '折线图'
