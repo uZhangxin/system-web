@@ -2,8 +2,8 @@
   <div class="tags-view-container">
     <z-scroll-pane class="tags-view-content">
       <router-link v-for="tag in visitedViews" :key="tag.path" ref="tag" tag="span" :to="tag.path"
-                   class="tags-view-item" :class="isActive(tag)?'active':''">{{ tag.title }}
-        <span v-if="!isFixed(tag)" class="el-icon-close"/>
+                   class="tags-view-item" :class="isActive(tag)?'active':''" @click.middle.native="!isAffix(tag)?closeSelectedTag(tag):''">{{ tag.title }}
+        <span v-if="!isAffix(tag)" class="el-icon-close" @click.stop="closeSelectedTag(tag)"/>
       </router-link>
     </z-scroll-pane>
   </div>
@@ -19,13 +19,18 @@ export default {
   computed: {
     ...mapGetters(['visitedViews'])
   },
+  data() {
+    return {
+      historyView: [] // 记录tag访问记录
+    }
+  },
   watch: {
     $route() {
       this.addTags()
     }
   },
   mounted() {
-    this.addTags()
+    this.initTags()
   },
   methods: {
     // 判断当前路由与标签路由是否相同
@@ -33,13 +38,55 @@ export default {
       return curTag.path === this.$route.path
     },
     // 判断当前标签路由是否为固定标签
-    isFixed(curTag) {
+    isAffix(curTag) {
       return curTag.meta && curTag.meta.affix
     },
     // 添加路由标签
-    addTags() {
-      this.$store.commit('tagsView/ADD_VISITED_VIEW', this.$route)
+    addTags(v) {
+      let tag = this.$route
+      // 添加指定路由标签，否则添加当前路由标签
+      if (v !== undefined) {
+        tag = v
+      }
+      this.$store.commit('tagsView/ADD_VISITED_VIEW', tag)
+      // 放入访问记录
+      this.historyView.push(tag)
+    },
+    // 关闭选中的tag
+    closeSelectedTag(curTag) {
+      this.$store.commit('tagsView/DEL_VISITED_VIEW', curTag)
+      // 删除关闭tag的所有访问记录
+      this.historyView = this.historyView.filter(item => {
+        return item.path !== curTag.path
+      })
+      // 如果关闭的tag是当前展示tag则跳到最近一次访问tag
+      if (this.isActive(curTag)) {
+        let o = this.historyView.pop()
+        this.$router.push(o.path)
+      }
+    },
+    // 初始化固定标签和当前页面标签
+    initTags() {
+      this.dealAffixTag(this.$router.options.routes)
+      this.addTags()
+    },
+    // 递归处理固定路由tag
+    dealAffixTag(routes) {
+      routes.forEach((v) => {
+        // 判断是否为导航路由
+        if (v.meta?.title !== undefined) {
+          // 判断是否存在子路由或者子路由是否为空
+          if (v.children === undefined || v.children.length === 0) {
+            if (v.meta.affix === true) {
+              this.addTags(v)
+            }
+          } else {
+            this.dealAffixTag(v.children)
+          }
+        }
+      })
     }
+
   }
 }
 </script>

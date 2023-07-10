@@ -13,9 +13,10 @@ let routeConfig = [
     component: () => import('@/view/login.vue')
   },
   {
-    path: '/index',
+    path: '/dashboard',
     component: () => import('@/view/layout.vue'),
-    meta: {}
+    name: 'dashboard',
+    meta: { title: '首页', affix: true }
   },
   {
     path: '/sys-config',

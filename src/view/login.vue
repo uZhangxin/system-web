@@ -101,7 +101,7 @@ export default {
               [CONSTANT.TOKEN]: res.data.token,
               [CONSTANT.USER_INFO]: res.data.userInfo
             })
-            this.$router.push({path: '/index'})
+            this.$router.push({path: '/dashboard'})
           } else {
             this.loading = false;
             this.getCode();
